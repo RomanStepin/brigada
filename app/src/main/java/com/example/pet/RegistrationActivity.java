@@ -5,8 +5,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,6 +59,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         button_registration_reg.setOnClickListener(this);
 
         registrationModelView = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(RegistrationModelViewImpl.class);
+
+        initialLiveData();
 
 
 
@@ -120,18 +124,23 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         registrationModelView.registrationError().observe(this, registrationError -> {
 
             if (registrationError.getClass() == FirebaseAuthWeakPasswordException.class)
-                Log.d("LOGGG", "ПАРОЛЬ СЛАБОВАТ. ХОТЯ БЫ 6 СИМВОЛОВ БРАТОК");
+                textInputLayout_password_reg.setError(getString(R.string.bad_password));
             if (registrationError.getClass() == FirebaseAuthUserCollisionException.class)
-                Log.d("LOGGG", "ЕМАИЛ УЖЕ ЕСТЬ");
+                textInputLayout_email_reg.setError(getString(R.string.email_already_registered));
             if (registrationError.getClass() == FirebaseAuthInvalidCredentialsException.class)
-                Log.d("LOGGG", "ЭТО НЕ ЕМАИЛ А КАЛ");
+                textInputLayout_email_reg.setError(getString(R.string.bad_email2));
 
             Log.d("LOGGG", registrationError.getClass().toString());
         });
 
         registrationModelView.registrationSuccessful().observe(this, isSuccessful -> {
             if (isSuccessful) {
-                Log.d("LOGGG", "ЗАЕБУМБА");
+                new MaterialAlertDialogBuilder(this)
+                        .setTitle(getString(R.string.email_confirm_dialog_title))
+                        .setMessage(getString(R.string.email_confirm_dialog_message))
+                        .setPositiveButton("OK", null)
+                        .setOnDismissListener(dialog ->{ finish(); })
+                        .show();
             }
         });
     }

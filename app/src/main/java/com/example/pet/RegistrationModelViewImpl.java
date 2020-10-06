@@ -14,11 +14,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.auth.FirebaseUser;
 
 public class RegistrationModelViewImpl extends RegistrationModelView
 {
-    MutableLiveData<Exception> registrationError;
-    MutableLiveData<Boolean> registrationSuccessful;
+    MutableLiveData<Exception> registrationError = new MutableLiveData<>();
+    MutableLiveData<Boolean> registrationSuccessful = new MutableLiveData<>();
 
     @Override
     public void registrationNewUser(String email, String password) {
@@ -28,7 +29,12 @@ public class RegistrationModelViewImpl extends RegistrationModelView
                 })
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        registrationSuccessful.postValue(true);
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        if (user != null) {
+                            user.sendEmailVerification().addOnCompleteListener(task1 -> {
+                                registrationSuccessful.postValue(true);
+                            });
+                        }
                     }
                 });
     }
