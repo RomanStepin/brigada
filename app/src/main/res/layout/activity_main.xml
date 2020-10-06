@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="end"
+    android:background="#FFFFFF"
+    android:theme="@style/Theme.MaterialComponents.DayNight"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/toolbar_name"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_load"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:outlineAmbientShadowColor="@color/design_default_color_secondary"
+        android:outlineSpotShadowColor="@color/design_default_color_secondary"
+        android:shadowColor="@color/design_default_color_secondary"
+        android:shadowDx="@android:integer/config_longAnimTime"
+        android:textSize="18sp"
+        app:cornerRadius="50dp"
+        app:icon="@drawable/ic_load"
+        app:iconGravity="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_name"
+        app:rippleColor="@color/design_default_color_secondary" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_items"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_load" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/action_button"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="50dp"
+        android:foreground="@android:drawable/ic_menu_help"
+        android:foregroundGravity="center"
+        app:backgroundTint="@color/colorAccent"
+        app:fabSize="auto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/recycler_items">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    <include
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="@+id/action_button"
+        app:layout_constraintEnd_toEndOf="@+id/action_button" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

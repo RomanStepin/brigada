@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Бригада</string>
+    <string name="authorization">Вход</string>
+    <string name="registration">Регистрация</string>
+    <string name="login">Имя</string>
+    <string name="password">Пароль</string>
+    <string name="confirm_password">Подтвердите пароль</string>
+    <string name="email">e-mail</string>
+    <string name="password_recovery">Забыли пароль ?</string>
+
+    <string name="user_not_found">Твоя рожа на всех столбах висит, но здесь поьзователя с таким e-mail нет.</string>
+    <string name="password_failed">Username, я люблю тебя как брата, но пароль есть пароль.</string>
+    <string name="account_not_verified">Есть маза, что ссука среди нас, поэтому подтвердите e-mail.</string>
+    <string name="user_is_already_registered">Username, это очень дурная политика - регаться второй раз.</string>
+    <string name="bad_password">Username, у тебя нервы как стальные канаты, а пароль ненадежный Adm1n#pnga - надежный.</string>
+    <string name="different_password">Я терпеть не стану, я способ найду, я добьюсь одинаковости паролей.</string>
+    <string name="empty_editText">Карты под стол, а стволы на стол. А поле не должно быть пустым.</string>
+    <string name="bad_email">Знаешь, какой самый главный плюс у собаки, который больше чем все остальные минусы? Собака есть в почтовом адресе.</string>
+    <string name="password_not_confirmed">Сань, ты что шланг? Ты ж не шланг. Пароли разные у тебя.</string>
+
+    Сань, ты что шланг? Ты ж не шланг.
+
+
+
+
+
+
+
+</resources>

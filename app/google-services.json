@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "424450239776",
+    "firebase_url": "https://brigada-305ee.firebaseio.com",
+    "project_id": "brigada-305ee",
+    "storage_bucket": "brigada-305ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424450239776:android:0ff67218638a7a3da17b45",
+        "android_client_info": {
+          "package_name": "com.example.pet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "424450239776-19v2opfq7igl8gfnlub0p3bf9bcnmrqs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pet",
+            "certificate_hash": "39987b63ca85f5d220fdd7147e27ac7bbdee3385"
+          }
+        },
+        {
+          "client_id": "424450239776-ffsso7nkj88q6ioupn9m0h958ab866aq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbN864VZHMug-1LoCEGaKyMbZJuBGigic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "424450239776-ffsso7nkj88q6ioupn9m0h958ab866aq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

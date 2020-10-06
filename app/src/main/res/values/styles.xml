@@ -1,0 +1,15 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/material_on_background_emphasis_medium</item>
+
+        <item name="colorAccent">@android:color/holo_red_dark</item>
+        <item name="rippleColor">@color/design_default_color_error</item>
+        <item name="colorControlNormal">#E91E63</item>
+        <item name="colorControlActivated">#E91E63</item>
+        <item name="colorControlHighlight">#E91E63</item>
+
+    </style>
+
+</resources>
