@@ -2,6 +2,7 @@ package com.example.pet;
 
 import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
@@ -20,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -50,15 +52,21 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
     RegistrationModelView registrationModelView;
 
+    MaterialAlertDialogBuilder progressDialogBuilder;
+    AlertDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         ButterKnife.bind(this);
+        progressDialogBuilder = new MaterialAlertDialogBuilder(this).setView(R.layout.progress_layout);
+        progressDialog = progressDialogBuilder.create();
 
         button_registration_reg.setOnClickListener(this);
 
         registrationModelView = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(RegistrationModelViewImpl.class);
+
 
         initialLiveData();
 
@@ -114,6 +122,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             case R.id.button_registration_reg:
                 if (!empty_editText_check()) {
                     registrationModelView.registrationNewUser(textInputEditText_email_reg.getText().toString(), textInputEditText_password_reg.getText().toString());
+                    showProgress();
                 }
                 break;
         }
@@ -123,18 +132,25 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     {
         registrationModelView.registrationError().observe(this, registrationError -> {
 
+            hideProgress();
+
             if (registrationError.getClass() == FirebaseAuthWeakPasswordException.class)
                 textInputLayout_password_reg.setError(getString(R.string.bad_password));
             if (registrationError.getClass() == FirebaseAuthUserCollisionException.class)
                 textInputLayout_email_reg.setError(getString(R.string.email_already_registered));
             if (registrationError.getClass() == FirebaseAuthInvalidCredentialsException.class)
                 textInputLayout_email_reg.setError(getString(R.string.bad_email2));
+            if (registrationError.getClass() == FirebaseNetworkException.class)
+                showNetworkFailedDialog();
 
             Log.d("LOGGG", registrationError.getClass().toString());
         });
 
         registrationModelView.registrationSuccessful().observe(this, isSuccessful -> {
             if (isSuccessful) {
+
+                hideProgress();
+
                 new MaterialAlertDialogBuilder(this)
                         .setTitle(getString(R.string.email_confirm_dialog_title))
                         .setMessage(getString(R.string.email_confirm_dialog_message))
@@ -143,6 +159,25 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                         .show();
             }
         });
+    }
+
+    void showNetworkFailedDialog()
+    {
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(getString(R.string.network_failed_dialog_title))
+                .setMessage(getString(R.string.network_failed_dialog_message))
+                .setPositiveButton("OK :(", null)
+                .show();
+    }
+
+    void showProgress()
+    {
+        progressDialog.show();
+    }
+
+    void hideProgress()
+    {
+        progressDialog.dismiss();
     }
 }
 

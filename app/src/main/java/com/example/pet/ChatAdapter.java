@@ -22,6 +22,5 @@ public class ChatAdapter extends FirebaseRecyclerAdapter<MyMessage1, ChatHolder>
         chatHolder.Bind(myMessage1);
     }
 
-
 }
 

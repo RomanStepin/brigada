@@ -1,19 +1,14 @@
 package com.example.pet;
 
-import android.app.Application;
-
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
 
-import java.util.List;
-
-public abstract class LoginViewModel extends AndroidViewModel
+public abstract class LoginViewModel extends ViewModel
 {
-    public LoginViewModel(@NonNull Application application) {
-        super(application);
-    }
+    public abstract void loginUser(String email, String password);
+    public abstract void checkCurrentUser();
+    public abstract void emailVerified();
 
+    public abstract LiveData<Exception> loginError();
+    public abstract LiveData<Boolean> loginConfirmed();
 }
-
-
