@@ -24,46 +24,53 @@
             android:layout_gravity="center|center_vertical"
             android:background="@drawable/message_text"
             android:gravity="start|left"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:paddingLeft="10dp">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textView_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:padding="10dp"
-                android:text="TextView"
-                android:textColor="#000000"
-
-                />
-
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:gravity="center_vertical"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView_time"
+                    android:id="@+id/textView_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:gravity="right|end"
+                    android:maxLines="1"
                     android:text="TextView"
                     android:textAlignment="textEnd"
                     android:textSize="8sp"
                     android:textStyle="italic" />
 
                 <TextView
-                    android:id="@+id/textView_name"
+                    android:id="@+id/textView_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:maxLines="1"
                     android:text="TextView"
+                    android:textAlignment="textStart"
                     android:textSize="8sp"
                     android:textStyle="italic" />
+
             </LinearLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textView_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="TextView"
+                android:textColor="#000000" />
 
         </LinearLayout>
 
